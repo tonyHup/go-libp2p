@@ -2,11 +2,10 @@ package main
 
 import (
 	"context"
-	"time"
 
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/peer"
-	mdns "github.com/libp2p/go-libp2p/p2p/discovery/mdns_legacy"
+	"github.com/libp2p/go-libp2p/p2p/discovery/mdns"
 )
 
 type discoveryNotifee struct {
@@ -21,10 +20,7 @@ func (n *discoveryNotifee) HandlePeerFound(pi peer.AddrInfo) {
 //Initialize the MDNS service
 func initMDNS(ctx context.Context, peerhost host.Host, rendezvous string) chan peer.AddrInfo {
 	// An hour might be a long long period in practical applications. But this is fine for us
-	ser, err := mdns.NewMdnsService(ctx, peerhost, time.Hour, rendezvous)
-	if err != nil {
-		panic(err)
-	}
+	ser := mdns.NewMdnsService(peerhost, rendezvous)
 
 	//register with service so that we get notified about peer discovery
 	n := &discoveryNotifee{}
