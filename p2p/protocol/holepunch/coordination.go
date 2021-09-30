@@ -119,7 +119,7 @@ func (hs *Service) initiateHolePunch(rp peer.ID) ([]ma.Multiaddr, time.Duration,
 	// send a CONNECT and start RTT measurement.
 	msg := &pb.HolePunch{
 		Type:     pb.HolePunch_CONNECT.Enum(),
-		ObsAddrs: addrsToBytes(hs.ids.OwnObservedAddrs()),
+		ObsAddrs: addrsToBytes(removeRelayAddrs(hs.ids.OwnObservedAddrs())),
 	}
 
 	start := time.Now()
@@ -141,8 +141,10 @@ func (hs *Service) initiateHolePunch(rp peer.ID) ([]ma.Multiaddr, time.Duration,
 		str.Reset()
 		return nil, 0, fmt.Errorf("expect CONNECT message, got %s", t)
 	}
-
-	addrs := addrsFromBytes(msg.ObsAddrs)
+	addrs := removeRelayAddrs(addrsFromBytes(msg.ObsAddrs))
+	if len(addrs) == 0 {
+		str.Reset()
+	}
 
 	msg.Reset()
 	msg.Type = pb.HolePunch_SYNC.Enum()
@@ -219,6 +221,10 @@ func (hs *Service) directConnect(rp peer.ID) error {
 		}
 	}
 
+	if len(hs.ids.OwnObservedAddrs()) == 0 {
+		return errors.New("can't initiate hole punch, as we don't have any public addresses")
+	}
+
 	// hole punch
 	for i := 0; i < maxRetries; i++ {
 		addrs, rtt, err := hs.initiateHolePunch(rp)
@@ -260,6 +266,11 @@ func (hs *Service) incomingHolePunch(s network.Stream) (rtt time.Duration, addrs
 	if !isRelayAddress(s.Conn().RemoteMultiaddr()) {
 		return 0, nil, fmt.Errorf("received hole punch stream: %s", s.Conn().RemoteMultiaddr())
 	}
+	ownAddrs := removeRelayAddrs(hs.ids.OwnObservedAddrs())
+	// If we can't tell the peer where to dial us, there's no point in starting the hole punching.
+	if len(ownAddrs) == 0 {
+		return 0, nil, errors.New("rejecting hole punch request, as we don't have any public addresses")
+	}
 
 	s.SetDeadline(time.Now().Add(StreamTimeout))
 	wr := protoio.NewDelimitedWriter(s)
@@ -273,13 +284,16 @@ func (hs *Service) incomingHolePunch(s network.Stream) (rtt time.Duration, addrs
 	if t := msg.GetType(); t != pb.HolePunch_CONNECT {
 		return 0, nil, fmt.Errorf("expected CONNECT message from initiator but got %d", t)
 	}
-	obsDial := addrsFromBytes(msg.ObsAddrs)
+	obsDial := removeRelayAddrs(addrsFromBytes(msg.ObsAddrs))
 	log.Debugw("received hole punch request", "peer", s.Conn().RemotePeer(), "addrs", obsDial)
+	if len(obsDial) == 0 {
+		return 0, nil, fmt.Errorf("expected CONNECT message to contain at least one message")
+	}
 
 	// Write CONNECT message
 	msg.Reset()
 	msg.Type = pb.HolePunch_CONNECT.Enum()
-	msg.ObsAddrs = addrsToBytes(hs.ids.OwnObservedAddrs())
+	msg.ObsAddrs = addrsToBytes(ownAddrs)
 	tstart := time.Now()
 	if err := wr.WriteMsg(msg); err != nil {
 		return 0, nil, fmt.Errorf("failed to write CONNECT message to initator: %w", err)
@@ -347,6 +361,16 @@ func (hs *Service) holePunchConnect(pi peer.AddrInfo, isClient bool) error {
 	}
 	log.Debugw("hole punch successful", "peer", pi.ID)
 	return nil
+}
+
+func removeRelayAddrs(addrs []ma.Multiaddr) []ma.Multiaddr {
+	result := make([]ma.Multiaddr, 0, len(addrs))
+	for _, addr := range addrs {
+		if !isRelayAddress(addr) {
+			result = append(result, addr)
+		}
+	}
+	return result
 }
 
 func isRelayAddress(a ma.Multiaddr) bool {
