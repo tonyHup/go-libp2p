@@ -5,7 +5,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/libp2p/go-libp2p/examples/testutils"
+	"github.com/tonyHup/go-libp2p/examples/testutils"
 )
 
 func TestMain(t *testing.T) {

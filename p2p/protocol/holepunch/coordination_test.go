@@ -15,10 +15,10 @@ import (
 	"github.com/libp2p/go-libp2p-core/peerstore"
 	"github.com/libp2p/go-libp2p-testing/race"
 
-	relayv1 "github.com/libp2p/go-libp2p/p2p/protocol/circuitv1/relay"
-	"github.com/libp2p/go-libp2p/p2p/protocol/holepunch"
-	holepunch_pb "github.com/libp2p/go-libp2p/p2p/protocol/holepunch/pb"
-	"github.com/libp2p/go-libp2p/p2p/protocol/identify"
+	relayv1 "github.com/tonyHup/go-libp2p/p2p/protocol/circuitv1/relay"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/holepunch"
+	holepunch_pb "github.com/tonyHup/go-libp2p/p2p/protocol/holepunch/pb"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/identify"
 
 	"github.com/libp2p/go-msgio/protoio"
 	ma "github.com/multiformats/go-multiaddr"

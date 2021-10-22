@@ -11,8 +11,8 @@ import (
 	"github.com/libp2p/go-libp2p-core/network"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/protocol"
-	pb "github.com/libp2p/go-libp2p/p2p/protocol/holepunch/pb"
-	"github.com/libp2p/go-libp2p/p2p/protocol/identify"
+	pb "github.com/tonyHup/go-libp2p/p2p/protocol/holepunch/pb"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/identify"
 
 	logging "github.com/ipfs/go-log/v2"
 	"github.com/libp2p/go-msgio/protoio"

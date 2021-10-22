@@ -11,8 +11,8 @@ import (
 
 	"github.com/libp2p/go-tcp-transport"
 
-	"github.com/libp2p/go-libp2p/p2p/protocol/circuitv2/client"
-	"github.com/libp2p/go-libp2p/p2p/protocol/circuitv2/relay"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/circuitv2/client"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/circuitv2/relay"
 
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/host"

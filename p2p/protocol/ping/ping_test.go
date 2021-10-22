@@ -9,8 +9,8 @@ import (
 
 	"github.com/libp2p/go-libp2p-core/peer"
 	swarmt "github.com/libp2p/go-libp2p-swarm/testing"
-	bhost "github.com/libp2p/go-libp2p/p2p/host/basic"
-	"github.com/libp2p/go-libp2p/p2p/protocol/ping"
+	bhost "github.com/tonyHup/go-libp2p/p2p/host/basic"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/ping"
 )
 
 func TestPing(t *testing.T) {

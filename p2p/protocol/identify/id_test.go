@@ -25,9 +25,9 @@ import (
 	blhost "github.com/libp2p/go-libp2p-blankhost"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 	swarmt "github.com/libp2p/go-libp2p-swarm/testing"
-	mocknet "github.com/libp2p/go-libp2p/p2p/net/mock"
-	"github.com/libp2p/go-libp2p/p2p/protocol/identify"
-	pb "github.com/libp2p/go-libp2p/p2p/protocol/identify/pb"
+	mocknet "github.com/tonyHup/go-libp2p/p2p/net/mock"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/identify"
+	pb "github.com/tonyHup/go-libp2p/p2p/protocol/identify/pb"
 
 	"github.com/libp2p/go-msgio/protoio"
 	ma "github.com/multiformats/go-multiaddr"
@@ -705,7 +705,7 @@ func TestUserAgent(t *testing.T) {
 func TestNotListening(t *testing.T) {
 	// Make sure we don't panic if we're not listening on any addresses.
 	//
-	// https://github.com/libp2p/go-libp2p/issues/939
+	// https://github.com/tonyHup/go-libp2p/issues/939
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
