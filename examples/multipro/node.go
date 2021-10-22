@@ -9,7 +9,7 @@ import (
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/protocol"
-	p2p "github.com/libp2p/go-libp2p/examples/multipro/pb"
+	p2p "github.com/tonyHup/go-libp2p/examples/multipro/pb"
 
 	ggio "github.com/gogo/protobuf/io"
 	"github.com/gogo/protobuf/proto"
