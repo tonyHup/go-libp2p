@@ -21,7 +21,7 @@ import (
 	coretest "github.com/libp2p/go-libp2p-core/test"
 
 	"github.com/libp2p/go-eventbus"
-	libp2p "github.com/libp2p/go-libp2p"
+	libp2p "github.com/tonyHup/go-libp2p"
 	blhost "github.com/libp2p/go-libp2p-blankhost"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 	swarmt "github.com/libp2p/go-libp2p-swarm/testing"

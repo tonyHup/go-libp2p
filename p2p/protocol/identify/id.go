@@ -45,7 +45,7 @@ const LibP2PVersion = "ipfs/0.1.0"
 // ClientVersion is the default user agent.
 //
 // Deprecated: Set this with the UserAgent option.
-var ClientVersion = "github.com/libp2p/go-libp2p"
+var ClientVersion = "github.com/tonyHup/go-libp2p"
 
 var (
 	legacyIDSize = 2 * 1024 // 2k Bytes
