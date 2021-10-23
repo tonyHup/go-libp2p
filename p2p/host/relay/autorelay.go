@@ -14,7 +14,7 @@ import (
 
 	circuit "github.com/libp2p/go-libp2p-circuit"
 	discovery "github.com/libp2p/go-libp2p-discovery"
-	basic "github.com/libp2p/go-libp2p/p2p/host/basic"
+	basic "github.com/tonyHup/go-libp2p/p2p/host/basic"
 
 	ma "github.com/multiformats/go-multiaddr"
 	manet "github.com/multiformats/go-multiaddr-net"

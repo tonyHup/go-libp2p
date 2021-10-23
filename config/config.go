@@ -18,9 +18,9 @@ import (
 	"github.com/libp2p/go-libp2p-core/transport"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 
-	bhost "github.com/libp2p/go-libp2p/p2p/host/basic"
-	"github.com/libp2p/go-libp2p/p2p/host/relay"
-	routed "github.com/libp2p/go-libp2p/p2p/host/routed"
+	bhost "github.com/tonyHup/go-libp2p/p2p/host/basic"
+	"github.com/tonyHup/go-libp2p/p2p/host/relay"
+	routed "github.com/tonyHup/go-libp2p/p2p/host/routed"
 
 	autonat "github.com/libp2p/go-libp2p-autonat"
 	blankhost "github.com/libp2p/go-libp2p-blankhost"

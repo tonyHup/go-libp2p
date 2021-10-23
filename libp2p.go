@@ -3,7 +3,7 @@ package libp2p
 import (
 	"context"
 
-	config "github.com/libp2p/go-libp2p/config"
+	config "github.com/tonyHup/go-libp2p/config"
 
 	"github.com/libp2p/go-libp2p-core/host"
 )

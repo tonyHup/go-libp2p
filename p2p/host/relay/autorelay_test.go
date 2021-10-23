@@ -10,7 +10,7 @@ import (
 
 	cienv "github.com/jbenet/go-cienv"
 	libp2p "github.com/libp2p/go-libp2p"
-	relay "github.com/libp2p/go-libp2p/p2p/host/relay"
+	relay "github.com/tonyHup/go-libp2p/p2p/host/relay"
 
 	cid "github.com/ipfs/go-cid"
 	circuit "github.com/libp2p/go-libp2p-circuit"

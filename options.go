@@ -18,9 +18,9 @@ import (
 	"github.com/libp2p/go-libp2p-core/peerstore"
 	"github.com/libp2p/go-libp2p-core/pnet"
 
-	"github.com/libp2p/go-libp2p/config"
-	bhost "github.com/libp2p/go-libp2p/p2p/host/basic"
-	autorelay "github.com/libp2p/go-libp2p/p2p/host/relay"
+	"github.com/tonyHup/go-libp2p/config"
+	bhost "github.com/tonyHup/go-libp2p/p2p/host/basic"
+	autorelay "github.com/tonyHup/go-libp2p/p2p/host/relay"
 
 	ma "github.com/multiformats/go-multiaddr"
 )

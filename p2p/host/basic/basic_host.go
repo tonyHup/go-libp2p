@@ -23,8 +23,8 @@ import (
 	addrutil "github.com/libp2p/go-addr-util"
 	"github.com/libp2p/go-eventbus"
 	inat "github.com/libp2p/go-libp2p-nat"
-	"github.com/libp2p/go-libp2p/p2p/protocol/identify"
-	"github.com/libp2p/go-libp2p/p2p/protocol/ping"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/identify"
+	"github.com/tonyHup/go-libp2p/p2p/protocol/ping"
 	"github.com/libp2p/go-netroute"
 
 	logging "github.com/ipfs/go-log"

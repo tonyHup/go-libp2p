@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	bhost "github.com/libp2p/go-libp2p/p2p/host/basic"
+	bhost "github.com/tonyHup/go-libp2p/p2p/host/basic"
 
 	u "github.com/ipfs/go-ipfs-util"
 	logging "github.com/ipfs/go-log"
