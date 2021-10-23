@@ -1,4 +1,4 @@
-package libp2p
+package tonyHup 
 
 // This file contains all libp2p configuration options (except the defaults,
 // those are in defaults.go).

@@ -1,4 +1,4 @@
-package libp2p
+package tonyHup
 
 // This file contains all the default configuration options.
 
