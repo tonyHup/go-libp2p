@@ -288,6 +288,7 @@ func (h *BasicHost) updateLocalIpAddr() {
 	}
 
 	// Resolve the interface addresses
+    /*
 	ifaceAddrs, err := manet.InterfaceMultiaddrs()
 	if err != nil {
 		// This usually shouldn't happen, but we could be in some kind
@@ -307,6 +308,7 @@ func (h *BasicHost) updateLocalIpAddr() {
 			h.allInterfaceAddrs = append(h.allInterfaceAddrs, addr)
 		}
 	}
+    */
 
 	// If netroute failed to get us any interface addresses, use all of
 	// them.
